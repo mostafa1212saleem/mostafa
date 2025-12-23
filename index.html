@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>System Access</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: black;
+  color: #00ff00;
+  font-family: 'Share Tech Mono', monospace;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.terminal {
+  width: 350px;
+  border: 2px solid #00ff00;
+  padding: 20px;
+  box-shadow: 0 0 20px #00ff00;
+}
+.glitch {
+  animation: glitch 1s infinite;
+}
+@keyframes glitch {
+  0% { text-shadow: 2px 0 red; }
+  20% { text-shadow: -2px 0 blue; }
+  40% { text-shadow: 2px 0 green; }
+  60% { text-shadow: -2px 0 purple; }
+  100% { text-shadow: 2px 0 red; }
+}
+.links a {
+  display: block;
+  margin: 10px 0;
+  color: #00ff00;
+  text-decoration: none;
+  border: 1px solid #00ff00;
+  padding: 5px;
+}
+.links a:hover {
+  background: #00ff00;
+  color: black;
+}
+.cursor {
+  display: inline-block;
+  width: 10px;
+  background: #00ff00;
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+<div class="terminal">
+  <p class="glitch">[ SYSTEM ONLINE ]</p>
+  <p id="typing"></p><span class="cursor"></span>
+
+  <div class="links" style="margin-top:15px; display:none;" id="links">
+    <a href="https://instagram.com/username">Instagram</a>
+    <a href="https://facebook.com/username">Facebook</a>
+    <a href="https://tiktok.com/@username">TikTok</a>
+    <a href="https://youtube.com/@username">YouTube</a>
+  </div>
+</div>
+
+<script>
+const text = "Access Granted...\nLoading Social Accounts...";
+let i = 0;
+const speed = 50;
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += 
+      text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+    i++;
+    setTimeout(typeEffect, speed);
+  } else {
+    document.getElementById("links").style.display = "block";
+  }
+}
+typeEffect();
+</script>
+</body>
+</html>
