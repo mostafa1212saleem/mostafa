@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>System Access</title>
 
 <!-- Google tag (gtag.js) -->
@@ -10,73 +11,101 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-2D7XJ1ZL1M');
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
-body {
-  background: black;
-  color: #00ff00;
-  font-family: 'Share Tech Mono', monospace;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+body{
+  background:black;
+  color:#00ff00;
+  font-family:'Share Tech Mono', monospace;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:15px; /* مهم للجوال */
 }
-.terminal {
-  width: 350px;
-  border: 2px solid #00ff00;
-  padding: 20px;
-  box-shadow: 0 0 20px #00ff00;
+
+/* Terminal */
+.terminal{
+  width:100%;
+  max-width:420px;   /* يكبر على الجوال */
+  border:2px solid #00ff00;
+  padding:20px;
+  box-shadow:0 0 20px #00ff00;
 }
-.glitch {
-  animation: glitch 1s infinite;
+
+/* Text effects */
+.glitch{
+  animation:glitch 1s infinite;
 }
-@keyframes glitch {
-  0% { text-shadow: 2px 0 red; }
-  20% { text-shadow: -2px 0 blue; }
-  40% { text-shadow: 2px 0 green; }
-  60% { text-shadow: -2px 0 purple; }
-  100% { text-shadow: 2px 0 red; }
+
+@keyframes glitch{
+  0%{text-shadow:2px 0 red;}
+  20%{text-shadow:-2px 0 blue;}
+  40%{text-shadow:2px 0 green;}
+  60%{text-shadow:-2px 0 purple;}
+  100%{text-shadow:2px 0 red;}
 }
-.links a {
-  display: block;
-  margin: 10px 0;
-  color: #00ff00;
-  text-decoration: none;
-  border: 1px solid #00ff00;
-  padding: 5px;
+
+/* Links */
+.links a{
+  display:block;
+  margin:12px 0;
+  color:#00ff00;
+  text-decoration:none;
+  border:1px solid #00ff00;
+  padding:10px;       /* أكبر للجوال */
+  text-align:center;
+  font-size:16px;
 }
-.links a:hover {
-  background: #00ff00;
-  color: black;
+
+.links a:hover{
+  background:#00ff00;
+  color:black;
 }
-.cursor {
-  display: inline-block;
-  width: 10px;
-  background: #00ff00;
-  animation: blink 1s infinite;
+
+/* Cursor */
+.cursor{
+  display:inline-block;
+  width:10px;
+  height:18px;
+  background:#00ff00;
+  animation:blink 1s infinite;
 }
-@keyframes blink {
-  50% { opacity: 0; }
+
+@keyframes blink{
+  50%{opacity:0;}
+}
+
+/* تحسين إضافي للجوال الصغير */
+@media (max-width:480px){
+  .terminal{
+    padding:18px;
+  }
+  body{
+    font-size:16px;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <div class="terminal">
   <p class="glitch">[ SYSTEM ONLINE ]</p>
   <p id="typing"></p><span class="cursor"></span>
 
-  <div class="links" style="margin-top:15px; display:none;" id="links">
-    <a href="https://wa.me/972512641779⁩⁩">WhatsApp</a>
+  <div class="links" id="links" style="margin-top:15px; display:none;">
+    <a href="https://wa.me/+972512641779">WhatsApp</a>
     <a href="https://facebook.com/mostafa.saleem.182080/">Facebook</a>
     <a href="https://tellonym.me/M.S.1_/">Tellonym</a>
   </div>
@@ -85,18 +114,20 @@ body {
 <script>
 const text = "Access Granted...\nLoading Social Accounts...";
 let i = 0;
-const speed = 50;
-function typeEffect() {
-  if (i < text.length) {
+const speed = 45;
+
+function typeEffect(){
+  if(i < text.length){
     document.getElementById("typing").innerHTML += 
       text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
     i++;
     setTimeout(typeEffect, speed);
-  } else {
+  }else{
     document.getElementById("links").style.display = "block";
   }
 }
 typeEffect();
 </script>
+
 </body>
 </html>
